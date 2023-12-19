@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    background-color: #E14343;
+}
+
+img.navbar{
+    width:100%;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 30px 0px 30px;
+}  
+
+section.mid-sect {
+    display: flex;
+    
+}
+
+div.card{
+    background-color: #A7DB8D;
+    width:380px;
+    height:540px;
+    margin:20px;
+    border:#CD0000 solid 5px;
+    border-radius:30px;
+}
+
+button{
+    background-color:#28AAFD ;
+    width: 80px;
+    height: 40px;
+}
+
