@@ -24,7 +24,7 @@ body{
     background-color: var(--hardRed);
     height: 80px;
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 130px;
     border-radius: 15px;
 }
 
@@ -37,6 +37,7 @@ body{
     width: 640px;
     border-radius: 10%;
     z-index: -2;
+
 }
 
 .leftCornerer{
@@ -54,13 +55,23 @@ body{
 .leftCornerBall{
     background-color: var(--hardRed);
     position: absolute;
-    left: 522px;
-    top: 68px;
-    height: 60px;
-    width: 60px;
+    left: 462px;
+    top: 42px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
 
+}
 
+.lemeDoItforyou{
+    background-color: #E14343;
+    position: absolute;
+    left: 515px;
+    top: 125px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    z-index: -1;
 }
 
 
