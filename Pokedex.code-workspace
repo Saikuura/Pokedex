@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Pokedex",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Unit Converter"
+	}
+}
