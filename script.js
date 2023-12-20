@@ -8,9 +8,13 @@ async function getPokemon() {
    
       console.log("data:", data);
 
-
     } catch (error) {
       console.error(error);
     }
   }
   getPokemon();
+
+
+  async function getSingelPokemon(pokemon) {
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon/1/')
+  }
