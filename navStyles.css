@@ -23,9 +23,8 @@ nav {
 }
 
 .searchbar {
-    background-color: var(--pokeyellow);
+    background-color: white;
     position: absolute;
-    position: center;
     top: 25px;
     right: 5%;
     height: 40px;
@@ -35,13 +34,33 @@ nav {
     
     font-size: 1.3rem;
 }
+.searchIcon {
+    position:absolute;
+    right: 18.6%;
+    top: 30px;
+    height: 30px;
+    width: 30px;
+    opacity: 70%;
+}
 
-.sideMenu {
+.dropdown {
     position: absolute;
     position: center;
     top: 25px;
     right: 2%;
-    
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+.dropbtn {
+    background-color: var(--buttonBlue);
+    border-radius: 15px;
+}
+
+.dropbtn img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .mainNavBox {
