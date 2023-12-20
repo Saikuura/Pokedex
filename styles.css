@@ -15,6 +15,11 @@ body{
 }
 /*! NAV BAR STYLING */
 
+/* .navbar {
+    width: 100%;
+} */
+
+
 .mainNavBox {
     background-color: var(--hardRed);
     height: 80px;
@@ -22,28 +27,30 @@ body{
     margin-bottom: 100px;
     border-radius: 15px;
 }
+
 .leftNavBox{
     background-color: var(--hardRed);
     position:absolute;
     top: 0px;
     left: 0px;
-    height: 128px;
+    height: 142px;
     width: 640px;
     border-radius: 10%;
     z-index: -2;
-
 }
+
 .leftCornerer{
     background-color: var(--lightRed);
     position: absolute;
     left: 535px;
     top: 63px;
-    rotate: 60deg;
+    rotate: 55deg;
     height: 200px;
     width: 100px;
     border-radius: 20%;
     z-index: -1;
 }
+
 .leftCornerBall{
     background-color: var(--hardRed);
     position: absolute;
@@ -52,11 +59,10 @@ body{
     height: 60px;
     width: 60px;
     border-radius: 50%;
+
+
 }
 
-.navbar {
-    width: 100%;
-}
 
 /*! BODY STYLING */
 
@@ -85,6 +91,7 @@ div.card{
 
 img.arr{
     background-color:var(--buttonBlue) ;
+    opacity: 80%;
     width: 64px;
     height: 64px;
     border: none;
