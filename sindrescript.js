@@ -81,9 +81,10 @@ async function displayPokemon(pokemonNr, theCard) {
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
     const typeContainer = document.createElement("div");
+    typeContainer.class =("typeContainer")
 
 
-    
+
     if (pokeDetails.types.length === 2) {
       const type1 = pokeDetails.types[0].type.name;
       const type2 = pokeDetails.types[1].type.name;
@@ -101,7 +102,7 @@ async function displayPokemon(pokemonNr, theCard) {
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
       );
-      typeContainer.append(type1name);
+      typeContainer.append("TYPE: ",type1name);
     }
 
     containerEl.append(titleEl, imageEl, typeContainer);
