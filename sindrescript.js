@@ -16,20 +16,20 @@ let scrollLength = 3;
 const totalPages = Math.floor(151);
 
 //! FUNCTIONAL MEDIA QUERIES ///
-const mediaQuery = window.matchMedia('(min-width: 600px)')
-console.log (mediaQuery)
+const mediaQuery = window.matchMedia("(min-width: 768px)");
+console.log(mediaQuery);
 
 function findScrollLength() {
-    if (mediaQuery.matches) {
-      scrollLength = 3;
-    } else {
-      scrollLength = 1;
-    }
+  if (mediaQuery.matches) {
+    scrollLength = 3;
+  } else {
+    scrollLength = 1;
   }
+}
 
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
-  findScrollLength()
+  findScrollLength();
   if (currentPage > 1) {
     currentPage -= scrollLength;
     getPokemon(apiUrl);
@@ -37,7 +37,7 @@ prevButton.addEventListener("click", () => {
 });
 
 nextButton.addEventListener("click", () => {
-  findScrollLength()
+  findScrollLength();
   if (currentPage < totalPages - 1) {
     currentPage += scrollLength;
     getPokemon(apiUrl);
@@ -45,13 +45,13 @@ nextButton.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", function (event) {
-  findScrollLength()
+  findScrollLength();
   if (currentPage > 1 && event.keyCode === 37) {
     currentPage -= scrollLength;
     getPokemon(apiUrl);
   }
   if (currentPage < totalPages - 1 && event.keyCode === 39) {
-    findScrollLength()
+    findScrollLength();
     currentPage += scrollLength;
     getPokemon(apiUrl);
   }
@@ -74,7 +74,6 @@ async function getPokemon(url) {
 
     console.log(data.count, data.next, data.previous);
     console.log(data);
-    // console.log(data.results[currentPage - 1])
     displayPokemon(data.results[currentPage - 1], card0);
     displayPokemon(data.results[currentPage], card1);
     displayPokemon(data.results[currentPage + 1], card2);
@@ -85,7 +84,9 @@ async function getPokemon(url) {
 
 getPokemon(apiUrl);
 
-//! INSERT POKEMON INTO CARDS ///
+//!                           ///
+//* INSERT POKEMON INTO CARDS ///
+//!                           ///
 
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = "";
@@ -108,7 +109,7 @@ async function displayPokemon(pokemonNr, theCard) {
     const imageEl = document.createElement("img");
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
-    const typeContainer = document.createElement("div");
+    const typeContainer = document.createElement("h3");
     typeContainer.class = "typeContainer";
 
     //! TYPES ///
@@ -120,13 +121,15 @@ async function displayPokemon(pokemonNr, theCard) {
       const type2name = pokeDetails.types[1].type.name.toUpperCase(
         pokeDetails.types[1].type.name
       );
-      typeContainer.append("TYPE: ", type1name, " and ", type2name);
+      typeContainer.append("h3");
+      typeContainer.textContent = `TYPE: ${type1name} and ${type2name}`;
     } else {
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
       );
-      typeContainer.append("TYPE: ", type1name);
+      typeContainer.textContent =`TYPE: ${type1name}`;
     }
+
     //! INSERTION INTO HTML ///
 
     containerEl.append(titleEl, imageEl, typeContainer);
