@@ -15,19 +15,19 @@ let nextPage = currentPage + 1;
 
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage -= 3;
-      getPokemon(apiUrl);
-    }
-  });
-  
-  nextButton.addEventListener("click", () => {
-    const totalPages = Math.floor(151);
-    if (currentPage < totalPages - 1) {
-      currentPage += 3;
-      getPokemon(apiUrl);
-    }
-  });
+  if (currentPage > 1) {
+    currentPage -= 3;
+    getPokemon(apiUrl);
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  const totalPages = Math.floor(151);
+  if (currentPage < totalPages - 1) {
+    currentPage += 3;
+    getPokemon(apiUrl);
+  }
+});
 
 async function getPokemon(url) {
   try {
@@ -65,23 +65,46 @@ getPokemon(apiUrl);
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = "";
 
-  console.log(pokemonNr);
+  // console.log(pokemonNr);
 
   if (currentPage >= 1) {
     const response = await fetch(pokemonNr.url);
     const pokeDetails = await response.json();
-console.log(pokeDetails)
-    const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name)
-    console.log(pokeName)
-    
+    console.log(pokeDetails);
+    const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name);
+    console.log(pokeName);
+
     const containerEl = document.createElement("div");
     const titleEl = document.createElement("h2");
-    titleEl.textContent = `#${pokeDetails.id}: ${(pokeName)}`;
+    titleEl.textContent = `#${pokeDetails.id}: ${pokeName}`;
     const imageEl = document.createElement("img");
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
+    const typeContainer = document.createElement("div");
 
-    containerEl.append(titleEl, imageEl);
+
+    
+    if (pokeDetails.types.length === 2) {
+      const type1 = pokeDetails.types[0].type.name;
+      const type2 = pokeDetails.types[1].type.name;
+
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      const type2name = pokeDetails.types[1].type.name.toUpperCase(
+        pokeDetails.types[1].type.name
+      );
+
+      typeContainer.append("TYPE: ", type1name, " and ", type2name);
+    } else {
+      const type = pokeDetails.types[0].type.name;
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      typeContainer.append(type1name);
+    }
+
+    containerEl.append(titleEl, imageEl, typeContainer);
     theCard.append(containerEl);
   }
 }

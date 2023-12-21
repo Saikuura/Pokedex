@@ -8,3 +8,7 @@ div.card{
     border-radius:30px;
 }
 
+.card {
+    font-family: 'Roboto', sans-serif;
+}
+
