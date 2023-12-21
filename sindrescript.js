@@ -12,7 +12,6 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
-<<<<<<< HEAD
 
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
