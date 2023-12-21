@@ -12,7 +12,8 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
-
+  const totalPages = Math.floor(151);
+  
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
   if (currentPage > 1) {
@@ -22,7 +23,7 @@ prevButton.addEventListener("click", () => {
 });
 
 nextButton.addEventListener("click", () => {
-  const totalPages = Math.floor(151);
+
   if (currentPage < totalPages - 1) {
     currentPage += 3;
     getPokemon(apiUrl);
@@ -30,11 +31,11 @@ nextButton.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", function (event) {
-  if (event.keyCode === 37) {
+  if (currentPage > 1 && event.keyCode === 37) {
     currentPage -= 3;
     getPokemon(apiUrl);
   }
-  if (event.keyCode === 39) {
+  if (currentPage < totalPages - 1 && event.keyCode === 39) {
     currentPage += 3;
     getPokemon(apiUrl);
   }
