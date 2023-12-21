@@ -29,6 +29,17 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+document.addEventListener("keydown", function (event) {
+  if (event.keyCode === 37) {
+    currentPage -= 3;
+    getPokemon(apiUrl);
+  }
+  if (event.keyCode === 39) {
+    currentPage += 3;
+    getPokemon(apiUrl);
+  }
+});
+
 async function getPokemon(url) {
   try {
     const response = await fetch(apiUrl);
@@ -81,12 +92,9 @@ async function displayPokemon(pokemonNr, theCard) {
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
     const typeContainer = document.createElement("div");
-    typeContainer.class =("typeContainer")
-
-
+    typeContainer.class = "typeContainer";
 
     if (pokeDetails.types.length === 2) {
-
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
       );
@@ -99,7 +107,7 @@ async function displayPokemon(pokemonNr, theCard) {
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
       );
-      typeContainer.append("TYPE: ",type1name);
+      typeContainer.append("TYPE: ", type1name);
     }
 
     containerEl.append(titleEl, imageEl, typeContainer);
