@@ -18,13 +18,13 @@ let nextPage = currentPage + 1;
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
   if (currentPage <= 151) {
-    let currentPage = +1;
+    let currentPage = +3;
   }
 });
 
 nextButton.addEventListener("click", () => {
   if (currentPage >= 1) {
-    let currentPage = -1;
+    let currentPage = -3;
   }
 });
 
