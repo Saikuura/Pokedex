@@ -1,37 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POKEDEX</title>
+    <link rel="icon" type="image/x-icon" href="/img/pokedexFavIcon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/jsmath-cmbx10" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="navStyles.css">
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <img class="navbar"src="img/Component 4.svg" alt="">
-       
+
+        <div class="mainNavBox">
+          <h1 class="pageTitle">POKEDEX</h1>
+          <h1 class="creds">Made By ASS</h1>
+        
+
+         
+
+        <div class="leftNavBox"></div>
+        <div class="leftCornerer"></div>
+        <div class="leftCornerBall"></div>
+        <div class="lemeDoItforyou"></div>
+
+
+          <input class="searchbar" type="text" id= "searchInput" placeholder="Search...">
+          <img src="img/searchIcon.svg" class="searchIcon">
+
+            <div class="dropdown">
+            <button class="dropbtn">
+              <img src="img/filter.svg" alt="" srcset="">
+            </button>
+            <div class="dropdown-content">
+
+
+
+        </div>
+    
     </nav>
+
+    <!--! MAIN SECTION !-->
+
     <main>
-            <section class="left-sect">
-                <img id="arr-left" class="arr" src="img/arrow-left-circle-svgrepo-com.svg" alt="">
-            </section>
+      <section class="left-sect">
+        <img id="arr-left"
+          class="arr"
+          src="img/arrow-left-circle-svgrepo-com.svg"
+          onclick=""
+        />
+      </section>
 
-            <section class="mid-sect">
-                <div class="card" id="Card1">
+      <section class="mid-sect">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </section>
 
-                </div>
-                <div class="card">
-
-                </div>
-                <div class="card">
-
-                </div>
-            </section>
-            
-            <section class="right-sect">
-              <button id="arr-right"><img  class="arr" src="img/arrow-right-circle-svgrepo-com.svg" alt=""></button>
-            </section>
+      <section class="right-sect">
+        <img
+          class="arr"
+          src="img/arrow-right-circle-svgrepo-com.svg"
+          onclick=""
+        />
+      </section>
     </main>
-</body>
+  </body>
 </html>
