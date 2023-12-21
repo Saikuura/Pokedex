@@ -12,8 +12,8 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
-  const totalPages = Math.floor(151);
-  
+const totalPages = Math.floor(151);
+
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
   if (currentPage > 1) {
@@ -23,7 +23,6 @@ prevButton.addEventListener("click", () => {
 });
 
 nextButton.addEventListener("click", () => {
-
   if (currentPage < totalPages - 1) {
     currentPage += 3;
     getPokemon(apiUrl);
@@ -40,6 +39,8 @@ document.addEventListener("keydown", function (event) {
     getPokemon(apiUrl);
   }
 });
+
+//! FUNCTION FOR GETTING THE POKEMON DATA ///
 
 async function getPokemon(url) {
   try {
@@ -67,17 +68,13 @@ async function getPokemon(url) {
 
 getPokemon(apiUrl);
 
-// async function displayPokemon() {
-//     cards.innerHTML = ""
-//     for ()
-// }
-
 //! INSERT POKEMON INTO CARDS ///
 
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = "";
-
   // console.log(pokemonNr);
+
+  //! FETCHING THE INFORMATION ///
 
   if (currentPage >= 1) {
     const response = await fetch(pokemonNr.url);
@@ -85,6 +82,8 @@ async function displayPokemon(pokemonNr, theCard) {
     console.log(pokeDetails);
     const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name);
     console.log(pokeName);
+
+    //! CREATING THE CONTENT ///
 
     const containerEl = document.createElement("div");
     const titleEl = document.createElement("h2");
@@ -95,6 +94,8 @@ async function displayPokemon(pokemonNr, theCard) {
     const typeContainer = document.createElement("div");
     typeContainer.class = "typeContainer";
 
+    //! TYPES ///
+
     if (pokeDetails.types.length === 2) {
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
@@ -102,7 +103,6 @@ async function displayPokemon(pokemonNr, theCard) {
       const type2name = pokeDetails.types[1].type.name.toUpperCase(
         pokeDetails.types[1].type.name
       );
-
       typeContainer.append("TYPE: ", type1name, " and ", type2name);
     } else {
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
@@ -110,10 +110,9 @@ async function displayPokemon(pokemonNr, theCard) {
       );
       typeContainer.append("TYPE: ", type1name);
     }
+    //! INSERTION INTO HTML ///
 
     containerEl.append(titleEl, imageEl, typeContainer);
     theCard.append(containerEl);
   }
 }
-
-// displayPokemon()
