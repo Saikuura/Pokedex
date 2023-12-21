@@ -30,20 +30,13 @@ main{
     font-family: 'Roboto', sans-serif;
 }  
 
-section.mid-sect {
+section.cardContainer {
     display: flex;
     justify-content: space-between;
     width: 80%;
 }
 
-div.card{
-    background-color: #A7DB8D;
-    width:380px;
-    height:540px;
-    margin:20px;
-    border: --hardRed solid 5px;
-    border-radius:30px;
-}
+
 
 main button {
     background-color: #73b5df;

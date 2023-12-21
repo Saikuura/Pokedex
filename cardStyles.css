@@ -1,0 +1,10 @@
+div.card{
+    background-color: #A7DB8D;
+    width:380px;
+    height:540px;
+    margin:20px;
+    padding: 12px;
+    border: --hardRed solid 5px;
+    border-radius:30px;
+}
+
