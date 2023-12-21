@@ -18,7 +18,8 @@ let nextPage = currentPage + 1;
 prevButton.addEventListener("click", () => {
   if (currentPage <= 151) {
     currentPage = -4;
-
+    prevPage = currentPage - 1;
+    nextPage = currentPage + 1;
   getPokemon(apiUrl);
 } 
 });
@@ -26,7 +27,8 @@ prevButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   if (currentPage >= 1) {
     currentPage = +4;
-
+    prevPage = currentPage - 1;
+    nextPage = currentPage + 1;
   getPokemon(apiUrl);
 } 
 });
