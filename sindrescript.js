@@ -1,4 +1,3 @@
-const cards  = document.getElementById("card");
 const card0 = document.getElementById("card0");
 const card1 = document.getElementById("card1");
 const card2 = document.getElementById("card2");
