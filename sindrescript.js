@@ -80,8 +80,6 @@ async function displayPokemon(pokemonNr, theCard) {
 
   containerEl.append(titleEl, imageEl)
   theCard.append(containerEl)
-
-
 }
 
 
