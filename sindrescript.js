@@ -15,7 +15,7 @@ let nextPage = currentPage + 1;
 
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       currentPage -= 3;
       getPokemon(apiUrl);
     }
@@ -75,7 +75,7 @@ console.log(pokeDetails)
     console.log(pokeName)
     const containerEl = document.createElement("div");
     const titleEl = document.createElement("h2");
-    titleEl.textContent = `#${pokeDetails.id}, ${(pokeName)}`;
+    titleEl.textContent = `#${pokeDetails.id}: ${(pokeName)}`;
     const imageEl = document.createElement("img");
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
