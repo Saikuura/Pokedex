@@ -40,16 +40,12 @@ async function displayPokemonList(pokemonList) {
     const pokemonDetails = await response.json()
     console.log(pokemonDetails)
 
-    const sprite = pokemonDetails.sprites.other["official-artwork"].front_default
-    const image = document.createElement("img")
-    image.src = sprite
-    image.classList.add("sprite")
+
 
     const name = document.createElement("h2")
     name.textContent = `${pokemonDetails.id} ${pokemonDetails.name}`
     name.id = pokemon.name
     container.appendChild(name)
-    container.appendChild(image)
     midSect.appendChild(container)
   }
 }
