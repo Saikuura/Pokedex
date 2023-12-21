@@ -73,6 +73,7 @@ async function displayPokemon(pokemonNr, theCard) {
 console.log(pokeDetails)
     const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name)
     console.log(pokeName)
+    
     const containerEl = document.createElement("div");
     const titleEl = document.createElement("h2");
     titleEl.textContent = `#${pokeDetails.id}: ${(pokeName)}`;
