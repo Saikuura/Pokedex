@@ -74,11 +74,20 @@ div.card{
     margin-top: 20px;
     margin-left: 20px;
 }
+.card div h2 {
+    background-color: #7bb55d;
+    width: fit-content;
+    padding: 5px 40px 5px 40px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 5;
+    opacity: 70%;
+}
 
 .card div h3 {
     margin-bottom: 20px;
     position: relative;
-    top: -40px;
+    top: -60px;
     background-color: #7bb55d;
     opacity: 70%;
     width: fit-content;
@@ -90,9 +99,9 @@ div.card{
 .card div img {
     position: relative;
     z-index: 2;
+    transition-duration: 0.3s;
 }
 
-/* .card div img:hover {
+ .card div img:hover {
     scale: 120%;
-    transition: transform 0.3s scale 0.3s;
-} */
+}
