@@ -11,7 +11,8 @@
     <link href="https://fonts.cdnfonts.com/css/jsmath-cmbx10" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="navStyles.css">
-    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+    <script src="sindrescript.js" defer></script>
   </head>
   <body>
     <nav>
@@ -19,17 +20,13 @@
         <div class="mainNavBox">
           <h1 class="pageTitle">POKEDEX</h1>
           <h1 class="creds">Made By ASS</h1>
-        
-
-         
 
         <div class="leftNavBox"></div>
         <div class="leftCornerer"></div>
         <div class="leftCornerBall"></div>
         <div class="lemeDoItforyou"></div>
 
-
-          <input class="searchbar" type="text" id= "searchInput" placeholder="Search...">
+          <input class="searchbar" type="text" id="searchInput" placeholder="Search...">
           <img src="img/searchIcon.svg" class="searchIcon">
 
             <div class="dropdown">
@@ -37,8 +34,6 @@
               <img src="img/filter.svg" alt="" srcset="">
             </button>
             <div class="dropdown-content">
-
-
 
         </div>
     
@@ -48,24 +43,24 @@
 
     <main>
       <section class="left-sect">
-        <img id="arr-left"
+        <img id="arrowLeft"
           class="arr"
           src="img/arrow-left-circle-svgrepo-com.svg"
-          onclick=""
+
         />
       </section>
 
       <section class="mid-sect">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card" id="card card0"></div>
+        <div class="card" id="card card1"></div>
+        <div class="card" id="card card2"></div>
       </section>
 
       <section class="right-sect">
-        <img id="arr-right"
+        <img id="arrowRight"
           class="arr"
           src="img/arrow-right-circle-svgrepo-com.svg"
-          onclick=""
+
         />
       </section>
     </main>
