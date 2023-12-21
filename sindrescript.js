@@ -17,14 +17,16 @@ let nextPage = currentPage + 1;
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
   if (currentPage <= 151) {
-    currentPage = +3;
-  }
+    currentPage = -3;
+  getPokemon(apiUrl);
+} 
 });
 
 nextButton.addEventListener("click", () => {
   if (currentPage >= 1) {
-    currentPage = -3;
-  }
+    currentPage = +3;
+  getPokemon(apiUrl);
+} 
 });
 
 // search.addEventListener("keypress", ()
@@ -64,7 +66,7 @@ getPokemon(apiUrl);
 //! INSERT POKEMON INTO CARDS ///
 
 async function displayPokemon(pokemonNr, theCard) {
-  // theCard.innerHTML = ""
+  theCard.innerHTML = ""
 
   const response = await fetch(pokemonNr.url)
   const pokeDetails = await response.json()
