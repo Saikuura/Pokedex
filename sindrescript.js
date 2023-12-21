@@ -17,17 +17,21 @@ let nextPage = currentPage + 1;
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
   if (currentPage <= 151) {
-    currentPage = -3;
+    currentPage = -4;
+
   getPokemon(apiUrl);
 } 
 });
 
 nextButton.addEventListener("click", () => {
   if (currentPage >= 1) {
-    currentPage = +3;
+    currentPage = +4;
+
   getPokemon(apiUrl);
 } 
 });
+
+
 
 // search.addEventListener("keypress", ()
 
@@ -46,10 +50,10 @@ async function getPokemon(url) {
 
     console.log(data.count, data.next, data.previous);
     console.log(data);
-    console.log(data.results[currentPage - 1])
-    displayPokemon(data.results[currentPage - 1], card0);
+    // console.log(data.results[currentPage - 1])
+    displayPokemon(data.results[prevPage], card0);
     displayPokemon(data.results[currentPage], card1);
-    displayPokemon(data.results[currentPage + 1], card2);
+    displayPokemon(data.results[nextPage], card2);
 
   } catch (error) {
     alert("Something went terribly wrong! HIDE THE CHILDREN!!!", error);
@@ -68,6 +72,10 @@ getPokemon(apiUrl);
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = ""
 
+  console.log(pokemonNr)
+console.log(pokemonNr)
+  if(currentPage >= 1){
+
   const response = await fetch(pokemonNr.url)
   const pokeDetails = await response.json()
 
@@ -80,6 +88,7 @@ async function displayPokemon(pokemonNr, theCard) {
 
   containerEl.append(titleEl, imageEl)
   theCard.append(containerEl)
+  }
 }
 
 
