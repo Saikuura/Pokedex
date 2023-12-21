@@ -45,13 +45,17 @@ async function getPokemon(url) {
 
     console.log(data.count, data.next, data.previous);
     console.log(data);
-    displayPokemon(data.result);
+    console.log(data.results[currentPage - 1])
+    displayPokemon(data.results[currentPage - 1], card0);
+    displayPokemon(data.results[currentPage], card1);
+    displayPokemon(data.results[currentPage + 1], card2);
+
   } catch (error) {
     alert("Something went terribly wrong! HIDE THE CHILDREN!!!", error);
   }
 }
 
-// getPokemon(apiUrl);
+getPokemon(apiUrl);
 
 // async function displayPokemon() {
 //     cards.innerHTML = ""
@@ -60,18 +64,16 @@ async function getPokemon(url) {
 
 //! INSERT POKEMON INTO CARDS ///
 
-async function displayPokemon(PokemonNr, theCard) {
-    
-    // theCard.innerHTML = ""
+async function displayPokemon(pokemonNr, theCard) {
+  // theCard.innerHTML = ""
 
-    const pokemonDetails = getPokemon(apiUrl).url
-
-    const containerEL = document.createElement("div")
+  const response = await fetch(pokemonNr.url)
+  const pokeDetails = await response.json()
+  // const containerEL = document.createElement("div")
     const titleEl = document.createElement("h2")
-    titleEl.textContent = `${PokemonNr.pokemonDetails.id}, ${PokemonNr.name}`
+  titleEl.textContent = `${pokeDetails.id}, ${pokeDetails.name}`
     const imageEl = document.createElement("img")
-    imageEl.src = pokemonDetails.sprites.other["official-artwork"].front_default
-    
+  imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default
 
 }
 
