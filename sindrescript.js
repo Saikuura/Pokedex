@@ -12,30 +12,47 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
+let scrollLength = 3;
 const totalPages = Math.floor(151);
+
+//! FUNCTIONAL MEDIA QUERIES ///
+const mediaQuery = window.matchMedia('(min-width: 500px)')
+console.log (mediaQuery)
+
+function findScrollLength() {
+    if (mediaQuery.matches) {
+      scrollLength = 3;
+    } else {
+      scrollLength = 1;
+    }
+  }
 
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
+  findScrollLength()
   if (currentPage > 1) {
-    currentPage -= 3;
+    currentPage -= scrollLength;
     getPokemon(apiUrl);
   }
 });
 
 nextButton.addEventListener("click", () => {
+  findScrollLength()
   if (currentPage < totalPages - 1) {
-    currentPage += 3;
+    currentPage += scrollLength;
     getPokemon(apiUrl);
   }
 });
 
 document.addEventListener("keydown", function (event) {
+  findScrollLength()
   if (currentPage > 1 && event.keyCode === 37) {
-    currentPage -= 3;
+    currentPage -= scrollLength;
     getPokemon(apiUrl);
   }
   if (currentPage < totalPages - 1 && event.keyCode === 39) {
-    currentPage += 3;
+    findScrollLength()
+    currentPage += scrollLength;
     getPokemon(apiUrl);
   }
 });
