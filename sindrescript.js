@@ -51,7 +51,7 @@ async function getPokemon(url) {
   }
 }
 
-getPokemon(apiUrl);
+// getPokemon(apiUrl);
 
 // async function displayPokemon() {
 //     cards.innerHTML = ""
@@ -61,9 +61,19 @@ getPokemon(apiUrl);
 //! INSERT POKEMON INTO CARDS ///
 
 async function displayPokemon(PokemonNr, theCard) {
-    theCard.innerHTML = ""
+    
+    // theCard.innerHTML = ""
+
+    const pokemonDetails = getPokemon(apiUrl).url
 
     const containerEL = document.createElement("div")
-
+    const titleEl = document.createElement("h2")
+    titleEl.textContent = `${PokemonNr.pokemonDetails.id}, ${PokemonNr.name}`
+    const imageEl = document.createElement("img")
+    imageEl.src = pokemonDetails.sprites.other["official-artwork"].front_default
+    
 
 }
+
+// displayPokemon()
+
