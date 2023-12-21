@@ -1,73 +1,55 @@
 const midSect = document.getElementById("mid-sect");
+const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+let currentPokemonIndex = 0;
+const pokemonPerPage = 3;
 
-const pokemonData = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
-let arr = [];
-
-// async function getPokemon() {
-//   fetch(pokemonData).then(response => response.json()).then(allpokemon => console.log(allpokemon))
-// }
-
-async function getPokemon(url) {
+async function getPokemonList(url) {
   try {
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (data.count) {
-      lastPage = data.count;
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
-    await fetchAndDisplayThreePokemon(data.results);
-
-    console.log("data:", data);
-  } catch (error) {
-    console.error(error);
+    const data = await response.json()
+    // update page variabels:
+    lastPage = data.count
+    console.log(data)
+    console.log(lastPage, "next: ", data.next, "previous: ", data.previous)
+    displayPokemonList(data.results)
+    // return data
+  }
+  catch (error) {
+    console.log(error)
   }
 }
 
-async function getSingelPokemon(pokemon) {
-  try {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
+getPokemonList(baseUrl)
+
+async function displayPokemonList(pokemonList) {
+  midSect.innerHTML = ""
+
+  for (let i = currentPokemonIndex; i < currentPokemonIndex + pokemonPerPage; i++) {
+    if (i >= pokemonList.length) {
+      break;
+    }
+    const pokemon = pokemonList[i]
+    const container = document.createElement("div")
+    container.classList.add("card")
+
+    const response = await fetch(pokemon.url)
+    const pokemonDetails = await response.json()
+    console.log(pokemonDetails)
+
+    const sprite = pokemonDetails.sprites.other["official-artwork"].front_default
+    const image = document.createElement("img")
+    image.src = sprite
+    image.classList.add("sprite")
+
+    const name = document.createElement("h2")
+    name.textContent = `${pokemonDetails.id} ${pokemonDetails.name}`
+    name.id = pokemon.name
+    container.appendChild(name)
+    container.appendChild(image)
+    midSect.appendChild(container)
   }
 }
-
-const fetchEachPokemon = async (pokemonList) => {
-  for (let i = 0; i < pokemonList.length; i++) {
-    arr.push(await getSingelPokemon(pokemonList[i].name));
-  }
-  console.log(arr)
-  showPokemon(arr)
-};
-
-const fetchAndDisplayThreePokemon = async (pokemonList) => {
-  for (let i = 0; i < pokemonList.length; i += 3) {
-    const threePokemon = pokemonList.slice(i, i + 3)
-    await fetchThreePokemon(threePokemon)
-  }
-  console.log(arr)
-  showPokemon(arr)
-};
-
-async function fetchThreePokemon(pokemonList) {
-  for (let i = 0; i < pokemonList.length; i++) {
-    arr.push(await getSingelPokemon(pokemonList[i].name));
-  }
-  console.log(arr);
-}
-
-const showPokemon = (pokemon) => {
-  pokemon.forEach((each) => {
-    const cardContainer = document.createElement('div');
-    cardContainer.classList.add('card');
-    cardContainer.innerHTML = `
-      <h1>${each.name}</h1>
-    `;
-    midSect.appendChild(cardContainer);
-  });
-};
-
-getPokemon(pokemonData);
