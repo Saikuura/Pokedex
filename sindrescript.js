@@ -13,29 +13,21 @@ let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
 
-
 //! MANIPULATE PAGES //
 prevButton.addEventListener("click", () => {
-  if (currentPage <= 151) {
-    currentPage = -4;
-    prevPage = currentPage - 1;
-    nextPage = currentPage + 1;
-  getPokemon(apiUrl);
-} 
-});
-
-nextButton.addEventListener("click", () => {
-  if (currentPage >= 1) {
-    currentPage = +4;
-    prevPage = currentPage - 1;
-    nextPage = currentPage + 1;
-  getPokemon(apiUrl);
-} 
-});
-
-
-
-// search.addEventListener("keypress", ()
+    if (currentPage > 0) {
+      currentPage -= 3;
+      getPokemon(apiUrl);
+    }
+  });
+  
+  nextButton.addEventListener("click", () => {
+    const totalPages = Math.floor(151);
+    if (currentPage < totalPages - 1) {
+      currentPage += 3;
+      getPokemon(apiUrl);
+    }
+  });
 
 async function getPokemon(url) {
   try {
@@ -53,10 +45,9 @@ async function getPokemon(url) {
     console.log(data.count, data.next, data.previous);
     console.log(data);
     // console.log(data.results[currentPage - 1])
-    displayPokemon(data.results[prevPage], card0);
+    displayPokemon(data.results[currentPage - 1], card0);
     displayPokemon(data.results[currentPage], card1);
-    displayPokemon(data.results[nextPage], card2);
-
+    displayPokemon(data.results[currentPage + 1], card2);
   } catch (error) {
     alert("Something went terribly wrong! HIDE THE CHILDREN!!!", error);
   }
@@ -72,29 +63,25 @@ getPokemon(apiUrl);
 //! INSERT POKEMON INTO CARDS ///
 
 async function displayPokemon(pokemonNr, theCard) {
-  theCard.innerHTML = ""
+  theCard.innerHTML = "";
 
-  console.log(pokemonNr)
-console.log(pokemonNr)
-  if(currentPage >= 1){
+  console.log(pokemonNr);
 
-  const response = await fetch(pokemonNr.url)
-  const pokeDetails = await response.json()
+  if (currentPage >= 1) {
+    const response = await fetch(pokemonNr.url);
+    const pokeDetails = await response.json();
+console.log(pokeDetails)
 
-  const containerEl = document.createElement("div")
-    const titleEl = document.createElement("h2")
-  titleEl.textContent = `${pokeDetails.id}, ${pokeDetails.name}`
-    const imageEl = document.createElement("img")
-  imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default
-  imageEl.alt = "Image of " + pokemonNr.name
+    const containerEl = document.createElement("div");
+    const titleEl = document.createElement("h2");
+    titleEl.textContent = `${pokeDetails.id}, ${pokeDetails.name}`;
+    const imageEl = document.createElement("img");
+    imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
+    imageEl.alt = "Image of " + pokemonNr.name;
 
-  containerEl.append(titleEl, imageEl)
-  theCard.append(containerEl)
+    containerEl.append(titleEl, imageEl);
+    theCard.append(containerEl);
   }
 }
 
-
-
-
 // displayPokemon()
-
