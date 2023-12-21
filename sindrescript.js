@@ -86,8 +86,6 @@ async function displayPokemon(pokemonNr, theCard) {
 
 
     if (pokeDetails.types.length === 2) {
-      const type1 = pokeDetails.types[0].type.name;
-      const type2 = pokeDetails.types[1].type.name;
 
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
@@ -98,7 +96,6 @@ async function displayPokemon(pokemonNr, theCard) {
 
       typeContainer.append("TYPE: ", type1name, " and ", type2name);
     } else {
-      const type = pokeDetails.types[0].type.name;
       const type1name = pokeDetails.types[0].type.name.toUpperCase(
         pokeDetails.types[0].type.name
       );
