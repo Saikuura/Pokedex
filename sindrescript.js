@@ -69,13 +69,22 @@ async function displayPokemon(pokemonNr, theCard) {
 
   const response = await fetch(pokemonNr.url)
   const pokeDetails = await response.json()
-  // const containerEL = document.createElement("div")
+
+  const containerEl = document.createElement("div")
     const titleEl = document.createElement("h2")
   titleEl.textContent = `${pokeDetails.id}, ${pokeDetails.name}`
     const imageEl = document.createElement("img")
   imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default
+  imageEl.alt = "Image of " + pokemonNr.name
+
+  containerEl.append(titleEl, imageEl)
+  theCard.append(containerEl)
+
 
 }
+
+
+
 
 // displayPokemon()
 
