@@ -1,31 +1,22 @@
 const card = document.getElementById("Card1");
-const arrowLeft = document.getElementById("arr-left")
-const arrowRight = document.getElementById("arr-right")
-
-const pokemonData = "https://pokeapi.co/api/v2/pokemon?";
-let perPage = 3;
-
-let currentPage = 0;
-let lastPage = 0;
 
 
-arrowRight.addEventListener("click", () => {
-  if (currentPage + perPage < lastPage) {
-    currentPage += perPage 
-    getPokemon(`${pokemonData}offset=${currentPage}&limit=${perPage}`)
-  } else {
-    currentPage = 0
-    getPokemon(pokemonData);
-  }
-}) 
+const pokemonData = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+
 
 
 let arr = [];
 
-async function getPokemon(apiUrl) {
+async function getPokemon() {
+  fetch(pokemonData).then(response => response.json()).then(allpokemon =>console.log(allpokemon))
+}
+
+
+
+async function getPokemon(url) {
   try {
     
-    const response = await fetch(apiUrl);
+    const response = await fetch(url);
     const data = await response.json();
 
     if(data.count) {
@@ -57,13 +48,7 @@ const fetchEachPokemon = async (pokemonList) => {
   showPokemon(arr)
 };
 
-/*const createPokemon = () => {
-  let pokemon = {
-    name: arr.name,
-    abilities: arr.abilities
-  }
-  return pokemon
-}*/
+
 
 const showPokemon = (pokemon) => {
   const output = card;
