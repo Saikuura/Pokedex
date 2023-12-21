@@ -34,14 +34,18 @@ section.mid-sect {
     display: flex;
     justify-content: space-between;
     width: 80%;
+    overflow-x: hidden;
 }
 
 div.card{
     background-color: #A7DB8D;
-    width:380px;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    min-width:440px;
     height:540px;
     margin:20px;
-    border: --hardRed solid 5px;
+    border: var(--hardRed) solid 5px;
     border-radius:30px;
 }
 

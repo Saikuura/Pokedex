@@ -1,28 +1,23 @@
-const card = document.getElementById("Card1");
-
+const midSect = document.getElementById("mid-sect");
 
 const pokemonData = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
-
-
 let arr = [];
 
-async function getPokemon() {
-  fetch(pokemonData).then(response => response.json()).then(allpokemon =>console.log(allpokemon))
-}
-
-
+// async function getPokemon() {
+//   fetch(pokemonData).then(response => response.json()).then(allpokemon => console.log(allpokemon))
+// }
 
 async function getPokemon(url) {
   try {
-    
+
     const response = await fetch(url);
     const data = await response.json();
 
-    if(data.count) {
+    if (data.count) {
       lastPage = data.count;
     }
-    await fetchEachPokemon(data.results);
+    await fetchAndDisplayThreePokemon(data.results);
 
     console.log("data:", data);
   } catch (error) {
@@ -48,20 +43,31 @@ const fetchEachPokemon = async (pokemonList) => {
   showPokemon(arr)
 };
 
+const fetchAndDisplayThreePokemon = async (pokemonList) => {
+  for (let i = 0; i < pokemonList.length; i += 3) {
+    const threePokemon = pokemonList.slice(i, i + 3)
+    await fetchThreePokemon(threePokemon)
+  }
+  console.log(arr)
+  showPokemon(arr)
+};
 
+async function fetchThreePokemon(pokemonList) {
+  for (let i = 0; i < pokemonList.length; i++) {
+    arr.push(await getSingelPokemon(pokemonList[i].name));
+  }
+  console.log(arr);
+}
 
 const showPokemon = (pokemon) => {
-  const output = card;
-  const map = pokemon.map((each) => {
-    return `
-      <div>
-        <h1>${each.name}</h1>
-      </div>
+  pokemon.forEach((each) => {
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card');
+    cardContainer.innerHTML = `
+      <h1>${each.name}</h1>
     `;
-  })
-  .join('')
-
-  return output.innerHTML = map
+    midSect.appendChild(cardContainer);
+  });
 };
 
 getPokemon(pokemonData);
