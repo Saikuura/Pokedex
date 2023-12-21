@@ -16,7 +16,7 @@ let scrollLength = 3;
 const totalPages = Math.floor(151);
 
 //! FUNCTIONAL MEDIA QUERIES ///
-const mediaQuery = window.matchMedia('(min-width: 500px)')
+const mediaQuery = window.matchMedia('(min-width: 600px)')
 console.log (mediaQuery)
 
 function findScrollLength() {
