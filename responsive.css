@@ -2,4 +2,12 @@
   #card2 {
     display: none;
   }
+  #card1 {
+    display: none;
+  }
+  section.cardContainer {
+   
+    justify-content: center;
+   
+  }
 }
