@@ -120,6 +120,9 @@ console.log(pokeDetails)
     const imageEl = document.createElement("img");
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
+    const typeContainer = document.createElement("h3");
+    typeContainer.class = "typeContainer";
+
 
     //! TYPES ///
 
