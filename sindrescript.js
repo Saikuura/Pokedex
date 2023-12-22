@@ -12,23 +12,6 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 let currentPage = 1;
 let prevPage = currentPage - 1;
 let nextPage = currentPage + 1;
-
-//! MANIPULATE PAGES //
-prevButton.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage -= 3;
-      getPokemon(apiUrl);
-    }
-  });
-  
-  nextButton.addEventListener("click", () => {
-    const totalPages = Math.floor(151);
-    if (currentPage < totalPages - 1) {
-      currentPage += 3;
-      getPokemon(apiUrl);
-    }
-  });
-
 let scrollLength = 3;
 const totalPages = Math.floor(151);
 
@@ -91,7 +74,6 @@ async function getPokemon(url) {
 
     console.log(data.count, data.next, data.previous);
     console.log(data);
-    // console.log(data.results[currentPage - 1])
     displayPokemon(data.results[currentPage - 1], card0);
     displayPokemon(data.results[currentPage], card1);
     displayPokemon(data.results[currentPage + 1], card2);
@@ -102,10 +84,13 @@ async function getPokemon(url) {
 
 getPokemon(apiUrl);
 
-//! INSERT POKEMON INTO CARDS ///
+//!                           ///
+//* INSERT POKEMON INTO CARDS ///
+//!                           ///
 
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = "";
+  // console.log(pokemonNr);
 
   //! FETCHING THE INFORMATION ///
 
