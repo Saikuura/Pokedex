@@ -121,7 +121,27 @@ console.log(pokeDetails)
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
 
-    containerEl.append(titleEl, imageEl);
+    //! TYPES ///
+
+    if (pokeDetails.types.length === 2) {
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      const type2name = pokeDetails.types[1].type.name.toUpperCase(
+        pokeDetails.types[1].type.name
+      );
+      typeContainer.append("h3");
+      typeContainer.textContent = `TYPE: ${type1name} and ${type2name}`;
+    } else {
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      typeContainer.textContent =`TYPE: ${type1name}`;
+    }
+
+    //! INSERTION INTO HTML ///
+
+    containerEl.append(titleEl, imageEl, typeContainer);
     theCard.append(containerEl);
   }
 }
