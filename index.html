@@ -4,70 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POKEDEX</title>
-    <link rel="icon" type="image/x-icon" href="/img/pokedexFavIcon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/jsmath-cmbx10" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/pokedexFavIcon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/jsmath-cmbx10"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="navStyles.css">
+    <link rel="stylesheet" href="navStyles.css" />
+
+
+    <link rel="stylesheet" href="cardStyles.css">
+
     <link rel="stylesheet" href="responsive.css">
-    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+    <script src="sindrescript.js" defer></script>
   </head>
   <body>
     <nav>
-
-        <div class="mainNavBox">
-          <h1 class="pageTitle">POKEDEX</h1>
-          <h1 class="creds">Made By ASS</h1>
-        
-
-         
+      <section class="mainNavBox">
+        <h1 class="pageTitle">POKEDEX</h1>
+        <h1 class="creds">Made By ASS</h1>
 
         <div class="leftNavBox"></div>
         <div class="leftCornerer"></div>
         <div class="leftCornerBall"></div>
         <div class="lemeDoItforyou"></div>
 
+        
+        <input
+          class="searchbar"
+          type="text"
+          id="searchInput"
+          placeholder="Search..."
+        />
+        <img src="img/searchIcon.svg" class="searchIcon" />
 
-          <input class="searchbar" type="text" id= "searchInput" placeholder="Search...">
-          <img src="img/searchIcon.svg" class="searchIcon">
-
-            <div class="dropdown">
-            <button class="dropbtn">
-              <img src="img/filter.svg" alt="" srcset="">
-            </button>
-            <div class="dropdown-content">
-
-
-
+        <div class="dropdown">
+          <button class="dropbtn">
+            <img src="img/filter.svg" alt="" srcset="" />
+          </button>
+          <div class="dropdown-content"></div>
         </div>
-    
+      </section>
     </nav>
 
     <!--! MAIN SECTION !-->
 
     <main>
       <section class="left-sect">
-        <img id="arr-left"
-          class="arr"
-          src="img/arrow-left-circle-svgrepo-com.svg"
-          onclick=""
-        />
+        <button id="arrowLeft">
+          <img class="arr hover" src="img/arrow-left-circle-svgrepo-com.svg" />
+        </button>
       </section>
 
-      <section class="mid-sect">
-        <div class="card card1"></div>
-        <div class="card card2"></div>
-        <div class="card card3"></div>
+      <section class="cardContainer">
+        <div class=" card hover" id="card0"></div>
+        <div class=" card hover" id="card1"></div>
+        <div class=" card hover" id="card2"></div>
       </section>
 
       <section class="right-sect">
-        <img
-          class="arr" id="arr-right"
-          src="img/arrow-right-circle-svgrepo-com.svg"
-          onclick=""
-        />
+        <button id="arrowRight">
+          <img class="arr hover" src="img/arrow-right-circle-svgrepo-com.svg" />
+        </button>
       </section>
     </main>
   </body>
