@@ -165,7 +165,7 @@ function handleSearch() {
   }
 
   
-  const isNumeric = /^\d+$/.test(searchTerm);
+  const isNumeric = /^\d+¤/.test(searchTerm);
   
   
   if (isNumeric) {
