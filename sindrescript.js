@@ -75,7 +75,6 @@ document.addEventListener("keydown", function (event) {
 });
 
 //! FUNCTION FOR GETTING THE POKEMON DATA ///
->>>>>>> Sindre-branch
 
 async function getPokemon(url) {
   try {
@@ -103,11 +102,6 @@ async function getPokemon(url) {
 
 getPokemon(apiUrl);
 
-// async function displayPokemon() {
-//     cards.innerHTML = ""
-//     for ()
-// }
-
 //! INSERT POKEMON INTO CARDS ///
 
 async function displayPokemon(pokemonNr, theCard) {
@@ -131,5 +125,3 @@ console.log(pokeDetails)
     theCard.append(containerEl);
   }
 }
-
-// displayPokemon()
