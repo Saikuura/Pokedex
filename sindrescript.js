@@ -107,22 +107,25 @@ getPokemon(apiUrl);
 async function displayPokemon(pokemonNr, theCard) {
   theCard.innerHTML = "";
 
-  console.log(pokemonNr);
+  //! FETCHING THE INFORMATION ///
 
   if (currentPage >= 1) {
     const response = await fetch(pokemonNr.url);
     const pokeDetails = await response.json();
-console.log(pokeDetails)
+    console.log(pokeDetails);
+    const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name);
+    console.log(pokeName);
+
+    //! CREATING THE CONTENT ///
 
     const containerEl = document.createElement("div");
     const titleEl = document.createElement("h2");
-    titleEl.textContent = `${pokeDetails.id}, ${pokeDetails.name}`;
+    titleEl.textContent = `#${pokeDetails.id}: ${pokeName}`;
     const imageEl = document.createElement("img");
     imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
     imageEl.alt = "Image of " + pokemonNr.name;
     const typeContainer = document.createElement("h3");
     typeContainer.class = "typeContainer";
-
 
     //! TYPES ///
 
