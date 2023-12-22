@@ -74,6 +74,7 @@ async function getPokemon(url) {
 
     console.log(data.count, data.next, data.previous);
     console.log(data);
+
     displayPokemon(data.results[currentPage - 1], card0);
     displayPokemon(data.results[currentPage], card1);
     displayPokemon(data.results[currentPage + 1], card2);
@@ -136,3 +137,147 @@ async function displayPokemon(pokemonNr, theCard) {
     theCard.append(containerEl);
   }
 }
+
+
+let nameList = [];
+
+async function fetchNameList() {
+  try{
+    const response = await fetch(apiUrl);
+    if(!response.ok) {
+      throw new Error('Failed to fetch names');
+    }
+    const data = await response.json();
+    pokemonList = data.results;
+  } catch (error) {
+    console.error('Error fetching names', error);
+  }
+}
+
+fetchNameList();
+
+function handleSearch() {
+  const searchTerm = search.value.toLowerCase().trim();
+
+  if (searchTerm === '') {
+    alert('Please enter a Pokemon name or ID for search.');
+    return;
+  }
+
+  
+  const isNumeric = /^\d+$/.test(searchTerm);
+  
+  
+  if (isNumeric) {
+    const pokemonId = parseInt(searchTerm);
+    if (pokemonId >= 1 && pokemonId <= totalPages) {
+      currentPage = pokemonId;
+      getPokemon(apiUrl);
+    } else {
+      alert('Please enter a valid Pokemon ID.');
+    }
+  } else {
+    const foundPokemon = nameList.find(pokemon => pokemon.name === searchTerm);
+    if(foundPokemon) {
+      const url = foundPokemon.url;
+      getPokemon(url);
+    } else {
+      alert('Pokemon not found. Please enter a valid Pokemon name');
+    }
+  }
+}
+search.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    handleSearch();
+  }
+});
+
+// ...
+/*function pokemonId(id) {
+  if (id < 10) {
+    return `#00${id}`;
+  } else if (id < 100) {
+    return `#0${id}`
+  } else {
+    return `#${id}`
+  }
+}
+
+async function searchPokemon(term) {
+  const isNumber = /^\d+$/.test(term);
+  if (isNumber) {
+    const id = parseInt(term);
+    if (id > 0 && id <= 151) {
+      displayPokemon(id);
+    } else {
+      return null;
+    }
+  } else {
+    const pokemon = await getPokemon(term.toLowerCase());
+    if (pokemon && pokemon.id <= 151) {
+      displaySearchedPokemon(pokemon, card0);
+    } else{
+      return null;
+    }
+  }
+}
+
+async function displaySearchedPokemon(pokemon) {
+  theCard.innerHTML = "";
+  // console.log(pokemonNr);
+
+  //! FETCHING THE INFORMATION ///
+  if (theCard){
+    theCard.innerHTML = "";
+  }
+  if (currentPage >= 1) {
+    const response = await fetch(pokemonNr.url);
+    const pokeDetails = await response.json();
+    console.log(pokeDetails);
+    const pokeName = pokeDetails.name.toUpperCase(pokeDetails.name);
+    console.log(pokeName);
+
+    //! CREATING THE CONTENT ///
+
+    const containerEl = document.createElement("div");
+    const titleEl = document.createElement("h2");
+    titleEl.textContent = `#${pokeDetails.id}: ${pokeName}`;
+    const imageEl = document.createElement("img");
+    imageEl.src = pokeDetails.sprites.other["official-artwork"].front_default;
+    imageEl.alt = "Image of " + pokemonNr.name;
+    const typeContainer = document.createElement("h3");
+    typeContainer.class = "typeContainer";
+
+    //! TYPES ///
+
+    if (pokeDetails.types.length === 2) {
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      const type2name = pokeDetails.types[1].type.name.toUpperCase(
+        pokeDetails.types[1].type.name
+      );
+      typeContainer.append("h3");
+      typeContainer.textContent = `TYPE: ${type1name} and ${type2name}`;
+    } else {
+      const type1name = pokeDetails.types[0].type.name.toUpperCase(
+        pokeDetails.types[0].type.name
+      );
+      typeContainer.textContent =`TYPE: ${type1name}`;
+    }
+
+    //! INSERTION INTO HTML ///
+
+    containerEl.append(titleEl, imageEl, typeContainer);
+    theCard.append(containerEl);
+  }
+}
+
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const searchTerm = search.value.trim().toLowerCase();
+    if(searchTerm !== "") {
+      searchPokemon(searchTerm);
+    }
+  }
+});*/
